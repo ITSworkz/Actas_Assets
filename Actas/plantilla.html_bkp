@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte de Activos</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h2 { color: #333; text-align: center; margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #dddddd; text-align: left; padding: 8px; }
+        th { background-color: #f2f2f2; }
+        .header { display: flex; align-items: center; justify-content: space-between; }
+        .logo { width: 150px; }
+        .signatures { display: flex; justify-content: space-between; margin-top: 40px; }
+        .signatures div { width: 45%; text-align: center; }
+        .signatures div hr { margin-top: 10px; border: none; border-top: 1px solid #000; }
+        .signature-image { width: 200px; height: auto; margin-bottom: 0px; }
+        .signature-blank { width: 155px; height: auto; }
+    </style>
+</head>
+<body>
+    <!-- Logo en la parte superior izquierda -->
+    <div class="header">
+        <img src="/home/juan_hernandez/Scripts/Actas/sworkzlogo.svg" alt="Sworkz Logo" class="logo">
+    </div>
+
+    <!-- Título centrado debajo del logo -->
+    <h2>GLPI - Assets Report - User: {{ items[0]['usuario'] }}</h2>
+
+    <!-- Tabla de datos de activos -->
+    <table>
+        <thead>
+            <tr>
+                <th>Item Type</th>
+                <th>Manufacturer</th>
+                <th>Serial</th>
+                <th>UUID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.tipo_item }}</td>
+                <td>{{ item.manufacturer }}</td>
+                <td>{{ item.serial }}</td>
+                <td>{{ item.uuid }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Sección de firmas -->
+    <div class="signatures">
+        <div>
+            <!-- Firma del IT Leader -->
+            <img src="/home/juan_hernandez/Scripts/Actas/Firma_Juan_Hernandez.jpeg" alt="Firma IT Leader" class="signature-image">
+            <hr>
+            <p>IT Leader</p>
+        </div>
+        <div>
+            <!-- Imagen en blanco encima de la firma del Recipient -->
+            <img src="/home/juan_hernandez/Scripts/Actas/Firma_blank.jpg" alt="Firma en blanco" class="signature-blank">
+            <hr>
+            <p>Recipient</p>
+        </div>
+    </div>
+</body>
+</html>
